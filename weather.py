@@ -2,7 +2,16 @@ import requests
 import datetime
 import time
 
-def get_weather( string: url ):
+def get_weather(url):
+    
+    # Check if URL is a string
+    if type(url) != str:
+        raise Exception("URL must be a string")
+
+    # Check if URL starts with http or https
+    if not url.startswith('http') and not url.startswith('https'):
+        raise Exception("URL must start with http or https")
+
     weather_request = requests.get(url)
     weather_json = weather_request.json()
 
@@ -30,4 +39,8 @@ def get_weather( string: url ):
     print('Sunrise: ' + str(sundriseTime))
 
 # Run the function
-get_weather( 'https://something.com' )
+try:
+    get_weather( 'https://www.google.com' )
+except Exception as m:
+    print(m)
+
