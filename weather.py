@@ -40,7 +40,10 @@ def get_weather(url):
 
 # Run the function
 try:
-    get_weather( 'https://www.google.com' )
+
+    get_weather()
+    
 except Exception as m:
+    
     print(m)
 
